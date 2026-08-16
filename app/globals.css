@@ -1,0 +1,130 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  color: #000000;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Black/white toggle (DialKit) */
+html.theme-dark body {
+  background: #000000;
+  color: #ffffff;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ---- Fixed Contact (top) ---- */
+.contact {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+.contact a {
+  pointer-events: auto;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  padding: 4px 10px;
+}
+
+/* ---- Scrolling media column ---- */
+.feed {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Full-bleed media, natural aspect ratio preserved */
+.block {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.block--video {
+  position: relative;
+  line-height: 0;
+}
+.block--video video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Play affordance */
+.playbtn {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 76px;
+  height: 76px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.playbtn:hover {
+  background: rgba(0, 0, 0, 0.72);
+  transform: scale(1.04);
+}
+.playbtn svg {
+  margin-left: 3px;
+}
+
+/* Placeholder for media not yet supplied */
+.placeholder {
+  aspect-ratio: 16 / 9;
+  background: #f2f2f2;
+  border: 1px dashed #cfcfcf;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.placeholder__label {
+  font-size: 15px;
+  color: #555;
+}
+.placeholder__hint {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #aaa;
+}
+
+/* ---- Fixed logo (bottom) ---- */
+.logo {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+.logo img {
+  display: block;
+  height: auto;
+  max-width: 90vw;
+}
