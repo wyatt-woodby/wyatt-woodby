@@ -1,1 +1,1 @@
-{ "title": "Apartment", "media": { "discriminant": "video", "value": { "videoSrc": "/media/apartment.mp4", "poster": "/media/posters/apartment.jpg" } } }
+{ "title": "Apartment", "media": { "discriminant": "vimeo", "value": { "vimeoUrl": "" } } }

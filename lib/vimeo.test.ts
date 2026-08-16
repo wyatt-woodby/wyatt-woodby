@@ -30,14 +30,21 @@ describe("parseVimeo", () => {
 });
 
 describe("buildEmbedSrc", () => {
-  it("includes hash and player params", () => {
-    expect(buildEmbedSrc({ id: "1218700554", hash: "0f7a0c0508" })).toBe(
-      "https://player.vimeo.com/video/1218700554?h=0f7a0c0508&badge=0&autopause=0",
+  it("builds a muted autoplay loop (resting) URL with the hash", () => {
+    expect(
+      buildEmbedSrc({ id: "1218700554", hash: "0f7a0c0508" }, { autoplay: true, muted: true, loop: true, controls: false }),
+    ).toBe(
+      "https://player.vimeo.com/video/1218700554?h=0f7a0c0508&autoplay=1&muted=1&loop=1&controls=0&title=0&byline=0&portrait=0&badge=0&autopause=0",
     );
+  });
+  it("builds an unmuted, controls-on (activated) URL", () => {
+    expect(
+      buildEmbedSrc({ id: "1218700554", hash: "0f7a0c0508" }, { autoplay: true, muted: false, loop: true, controls: true }),
+    ).toContain("muted=0&loop=1&controls=1");
   });
   it("omits h when no hash", () => {
     expect(buildEmbedSrc({ id: "1218700554" })).toBe(
-      "https://player.vimeo.com/video/1218700554?badge=0&autopause=0",
+      "https://player.vimeo.com/video/1218700554?autoplay=0&muted=0&loop=0&controls=0&title=0&byline=0&portrait=0&badge=0&autopause=0",
     );
   });
 });

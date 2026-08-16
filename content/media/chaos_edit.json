@@ -1,1 +1,1 @@
-{ "title": "Chaos Edit", "media": { "discriminant": "video", "value": { "videoSrc": "/media/chaos_edit.mp4", "poster": "/media/posters/chaos_edit.jpg" } } }
+{ "title": "Chaos Edit", "media": { "discriminant": "vimeo", "value": { "vimeoUrl": "" } } }

@@ -1,1 +1,1 @@
-{ "title": "Blooming", "media": { "discriminant": "video", "value": { "videoSrc": "/media/BLOOMING_16x9_30s.mp4", "poster": "/media/posters/BLOOMING_16x9_30s.jpg" } } }
+{ "title": "Blooming", "media": { "discriminant": "vimeo", "value": { "vimeoUrl": "" } } }

@@ -21,7 +21,22 @@ export function parseVimeo(input: string): VimeoRef | null {
   return null;
 }
 
-export function buildEmbedSrc({ id, hash }: VimeoRef): string {
-  const params = [hash ? `h=${hash}` : "", "badge=0", "autopause=0"].filter(Boolean);
+export type VimeoPlayerOptions = {
+  autoplay?: boolean;
+  muted?: boolean;
+  loop?: boolean;
+  controls?: boolean;
+};
+
+// Builds the player URL. Title/byline/portrait/badge are always stripped so the
+// embed matches the site chrome regardless of how the link was pasted.
+export function buildEmbedSrc({ id, hash }: VimeoRef, opts: VimeoPlayerOptions = {}): string {
+  const params: string[] = [];
+  if (hash) params.push(`h=${hash}`);
+  params.push(`autoplay=${opts.autoplay ? 1 : 0}`);
+  params.push(`muted=${opts.muted ? 1 : 0}`);
+  params.push(`loop=${opts.loop ? 1 : 0}`);
+  params.push(`controls=${opts.controls ? 1 : 0}`);
+  params.push("title=0", "byline=0", "portrait=0", "badge=0", "autopause=0");
   return `https://player.vimeo.com/video/${id}?${params.join("&")}`;
 }

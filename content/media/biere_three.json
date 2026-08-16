@@ -1,1 +1,1 @@
-{ "title": "Biere Three", "media": { "discriminant": "video", "value": { "videoSrc": "/media/biere_three.mp4", "poster": "/media/posters/biere_three.jpg" } } }
+{ "title": "Biere Three", "media": { "discriminant": "vimeo", "value": { "vimeoUrl": "" } } }

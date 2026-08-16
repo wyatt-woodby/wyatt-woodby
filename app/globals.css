@@ -96,6 +96,17 @@ a {
   margin-left: 3px;
 }
 
+/* Vimeo blocks autoplay muted; reveal the play button on hover only. */
+.block--vimeo .playbtn {
+  opacity: 0;
+  transition: opacity 0.18s ease, background 0.15s ease, transform 0.15s ease;
+  pointer-events: none;
+}
+.block--vimeo:hover .playbtn {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 /* Placeholder for media not yet supplied */
 .placeholder {
   aspect-ratio: 16 / 9;

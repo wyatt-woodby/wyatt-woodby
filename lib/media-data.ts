@@ -1,12 +1,11 @@
 import "server-only";
 import { createReader } from "@keystatic/core/reader";
 import keystaticConfig from "../keystatic.config";
-import { parseVimeo, buildEmbedSrc } from "./vimeo";
+import { parseVimeo } from "./vimeo";
 
 export type ResolvedMediaItem =
-  | { kind: "vimeo"; id: string; title: string; embedSrc: string; width: number; height: number }
+  | { kind: "vimeo"; id: string; title: string; vimeoId: string; hash?: string; width: number; height: number }
   | { kind: "image"; id: string; title: string; src: string }
-  | { kind: "video"; id: string; title: string; src: string; poster?: string }
   | { kind: "missing"; id: string; title: string };
 
 const dimsCache = new Map<string, { width: number; height: number }>();
@@ -46,7 +45,7 @@ async function resolveEntry(
     const ref = parseVimeo((value as { vimeoUrl?: string }).vimeoUrl ?? "");
     if (!ref) return { kind: "missing", id, title };
     const { width, height } = await fetchDimensions(ref.id, ref.hash);
-    return { kind: "vimeo", id, title, embedSrc: buildEmbedSrc(ref), width, height };
+    return { kind: "vimeo", id, title, vimeoId: ref.id, hash: ref.hash, width, height };
   }
   if (discriminant === "image") {
     const file = (value as { file?: string }).file;
@@ -55,11 +54,6 @@ async function resolveEntry(
     // configured publicPath so the browser can load it from /media/.
     const src = file.startsWith("/") ? file : `/media/${file}`;
     return { kind: "image", id, title, src };
-  }
-  if (discriminant === "video") {
-    const v = value as { videoSrc?: string; poster?: string };
-    if (!v.videoSrc) return { kind: "missing", id, title };
-    return { kind: "video", id, title, src: v.videoSrc, poster: v.poster || undefined };
   }
   return { kind: "missing", id, title };
 }

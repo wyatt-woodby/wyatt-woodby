@@ -27,8 +27,7 @@ describe("getMedia", () => {
 
   it("resolves a vimeo clip with oEmbed dimensions", async () => {
     const clip = (await getMedia(ROOT))[1];
-    expect(clip).toMatchObject({ kind: "vimeo", width: 1080, height: 1350 });
-    if (clip.kind === "vimeo") expect(clip.embedSrc).toContain("player.vimeo.com/video/1218700554");
+    expect(clip).toMatchObject({ kind: "vimeo", vimeoId: "1218700554", hash: "0f7a0c0508", width: 1080, height: 1350 });
   });
 
   it("marks an unparseable vimeo item as missing", async () => {

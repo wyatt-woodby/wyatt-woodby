@@ -28,7 +28,6 @@ export default config({
             options: [
               { label: "Vimeo video", value: "vimeo" },
               { label: "Image", value: "image" },
-              { label: "Legacy MP4", value: "video" },
             ],
             defaultValue: "vimeo",
           }),
@@ -46,10 +45,6 @@ export default config({
                 directory: "public/media",
                 publicPath: "/media/",
               }),
-            }),
-            video: fields.object({
-              videoSrc: fields.text({ label: "MP4 path (legacy)" }),
-              poster: fields.text({ label: "Poster path (legacy)" }),
             }),
           },
         ),
