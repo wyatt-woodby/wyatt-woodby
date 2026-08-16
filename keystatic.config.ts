@@ -1,8 +1,15 @@
 import { config, collection, singleton, fields } from "@keystatic/core";
 
+// KEYSTATIC_REPO is "owner/name"; GitHub storage needs it split into an object.
+function githubRepo(): { owner: string; name: string } | null {
+  const [owner, name] = (process.env.KEYSTATIC_REPO ?? "").split("/");
+  return owner && name ? { owner, name } : null;
+}
+
+const repo = githubRepo();
 const storage =
-  process.env.NODE_ENV === "production" && process.env.KEYSTATIC_REPO
-    ? ({ kind: "github", repo: process.env.KEYSTATIC_REPO } as const)
+  process.env.NODE_ENV === "production" && repo
+    ? ({ kind: "github", repo } as const)
     : ({ kind: "local" } as const);
 
 export default config({
