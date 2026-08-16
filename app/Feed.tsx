@@ -15,7 +15,7 @@ export function Feed({ items }: { items: ResolvedMediaItem[] }) {
     contactTopPadding,
     mediaGap,
   } = useDialKit("Layout", {
-    blackBackground: true,
+    blackBackground: false,
     logoMinWidth: [240, 40, 600, 2],
     logoMaxWidth: [300, 120, 1200, 2],
     sidePadding: [276, 0, 400, 4],
