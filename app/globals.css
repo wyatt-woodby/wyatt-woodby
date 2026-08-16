@@ -66,6 +66,11 @@ a {
   height: auto;
 }
 
+.block--vimeo {
+  position: relative;
+  width: 100%;
+}
+
 /* Play affordance */
 .playbtn {
   position: absolute;
