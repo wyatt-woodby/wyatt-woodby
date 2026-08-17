@@ -19,6 +19,11 @@ npm-debug.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# local media (heavy; headed to Vimeo). logo.svg is tracked below.
+# Heavy video files head to Vimeo, so keep them out of git.
+# Stills (images) DO ship in the repo so they deploy — un-ignored below.
 /public/media/*
 !/public/media/logo.svg
+!/public/media/*.jpg
+!/public/media/*.jpeg
+!/public/media/*.png
+!/public/media/*.webp
