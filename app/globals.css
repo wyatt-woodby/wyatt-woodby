@@ -71,42 +71,6 @@ a {
   width: 100%;
 }
 
-/* Play affordance */
-.playbtn {
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 76px;
-  height: 76px;
-  border: none;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.55);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background 0.15s ease, transform 0.15s ease;
-}
-.playbtn:hover {
-  background: rgba(0, 0, 0, 0.72);
-  transform: scale(1.04);
-}
-.playbtn svg {
-  margin-left: 3px;
-}
-
-/* Vimeo blocks autoplay muted; reveal the play button on hover only. */
-.block--vimeo .playbtn {
-  opacity: 0;
-  transition: opacity 0.18s ease, background 0.15s ease, transform 0.15s ease;
-  pointer-events: none;
-}
-.block--vimeo:hover .playbtn {
-  opacity: 1;
-  pointer-events: auto;
-}
-
 /* Placeholder for media not yet supplied */
 .placeholder {
   aspect-ratio: 16 / 9;
