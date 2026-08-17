@@ -18,7 +18,7 @@ export function Feed({ items }: { items: ResolvedMediaItem[] }) {
     blackBackground: false,
     logoMinWidth: [240, 40, 600, 2],
     logoMaxWidth: [300, 120, 1200, 2],
-    sidePadding: [0, 0, 400, 4],
+    sidePadding: [276, 0, 400, 4],
     contactTopPadding: [24, 0, 120, 4],
     logoBottomPadding: [32, 0, 120, 4],
     mediaGap: [48, 0, 160, 4],
