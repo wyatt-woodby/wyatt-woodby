@@ -1,15 +1,16 @@
 import { config, collection, singleton, fields } from "@keystatic/core";
 
-// KEYSTATIC_REPO is "owner/name"; GitHub storage needs it split into an object.
-function githubRepo(): { owner: string; name: string } | null {
-  const [owner, name] = (process.env.KEYSTATIC_REPO ?? "").split("/");
-  return owner && name ? { owner, name } : null;
-}
-
-const repo = githubRepo();
+// The repo owner/name are public, so they must be hardcoded here (not read from
+// a server-only env var) — this config is evaluated in the browser bundle too,
+// and Next only exposes NEXT_PUBLIC_* vars there. Reading KEYSTATIC_REPO here
+// made the client fall back to "local" while the server used "github", breaking
+// the GitHub login gate and all collection reads.
 const storage =
-  process.env.NODE_ENV === "production" && repo
-    ? ({ kind: "github", repo } as const)
+  process.env.NODE_ENV === "production"
+    ? ({
+        kind: "github",
+        repo: { owner: "wyatt-woodby", name: "wyatt-woodby" },
+      } as const)
     : ({ kind: "local" } as const);
 
 export default config({
